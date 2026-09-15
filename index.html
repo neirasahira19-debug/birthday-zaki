@@ -3,196 +3,741 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday, Zaki ❤️</title>
+<title>For Zaki 🤍</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#ffffff,#eaf4ff);
-  color:#183b63;
-  text-align:center;
-  overflow-x:hidden;
+* {
+  box-sizing: border-box;
 }
 
-.hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:30px 20px;
+html {
+  scroll-behavior: smooth;
 }
 
-h1{
-  font-size:42px;
-  margin:10px;
-  animation:fadeDown 1.5s ease;
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  color: #183b63;
+  background:
+    radial-gradient(circle at top, #dff1ff, transparent 35%),
+    linear-gradient(135deg, #ffffff, #eef7ff);
+  overflow-x: hidden;
 }
 
-.subtitle{
-  font-size:18px;
-  animation:fadeUp 2s ease;
+/* ================= GENERAL ================= */
+
+.page {
+  min-height: 100vh;
+  padding: 45px 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 
-button{
-  margin-top:30px;
-  padding:15px 28px;
-  border:none;
-  border-radius:30px;
-  background:#2879d0;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  box-shadow:0 8px 20px #2879d055;
-  cursor:pointer;
-  animation:pulse 2s infinite;
+.page.active {
+  display: flex;
+  animation: pageIn 1s ease;
 }
 
-#surprise{
-  display:none;
-  padding:25px 18px 50px;
+.card {
+  width: min(680px, 100%);
+  padding: 30px 24px;
+  border-radius: 30px;
+  background: rgba(255,255,255,.86);
+  box-shadow: 0 20px 60px rgba(40,100,150,.16);
+  border: 1px solid #dceeff;
+  backdrop-filter: blur(12px);
 }
 
-.card{
-  max-width:650px;
-  margin:auto;
-  background:white;
-  padding:25px;
-  border-radius:25px;
-  box-shadow:0 10px 35px #24547b22;
-  animation:appear 1s ease;
+h1 {
+  font-size: clamp(38px, 10vw, 65px);
+  margin: 15px 0;
 }
 
-.message{
-  line-height:1.8;
-  font-size:16px;
-  white-space:pre-line;
+h2 {
+  font-size: 30px;
 }
 
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:25px;
+p {
+  line-height: 1.8;
 }
 
-.gallery img{
-  width:100%;
-  height:210px;
-  object-fit:cover;
-  border-radius:18px;
-  box-shadow:0 5px 15px #0002;
-  transition:.4s;
+.small {
+  color: #718aa1;
+  font-family: Arial, sans-serif;
 }
 
-.gallery img:hover{
-  transform:scale(1.04) rotate(1deg);
+button {
+  border: none;
+  border-radius: 50px;
+  padding: 14px 25px;
+  margin: 9px;
+  background: #2879d0;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(40,121,208,.25);
+  transition: .3s;
 }
 
-.heart{
-  position:fixed;
-  bottom:-30px;
-  font-size:22px;
-  animation:float 6s linear forwards;
-  pointer-events:none;
+button:hover {
+  transform: translateY(-4px) scale(1.04);
 }
 
-@keyframes float{
-  to{
-    transform:translateY(-110vh) rotate(360deg);
-    opacity:0;
+button:active {
+  transform: scale(.9);
+}
+
+/* ================= OPENING ================= */
+
+.big-heart {
+  font-size: 75px;
+  animation: heartbeat 1.4s infinite;
+}
+
+/* ================= SURPRISE 2 ================= */
+
+.gift {
+  font-size: 75px;
+  animation: shake 1.5s infinite;
+}
+
+/* ================= HEART GAME ================= */
+
+.heart-area {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.heart-button {
+  width: 70px;
+  height: 70px;
+  padding: 0;
+  margin: 0;
+  background: white;
+  color: #2879d0;
+  border: 2px solid #d7eaff;
+  font-size: 38px;
+}
+
+.heart-button.clicked {
+  background: #2879d0;
+  color: white;
+  transform: scale(1.15) rotate(8deg);
+}
+
+/* ================= PHOTOS ================= */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 13px;
+  margin-top: 25px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.12);
+  transition: .5s;
+  animation: photoIn .9s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+.gallery img:last-child {
+  grid-column: 1 / -1;
+}
+
+/* ================= LETTER ================= */
+
+.letter {
+  text-align: left;
+  font-size: 17px;
+  line-height: 2;
+  white-space: pre-line;
+}
+
+.quote {
+  font-style: italic;
+  color: #5683ac;
+  margin: 20px 0;
+}
+
+/* ================= FLOATING ELEMENTS ================= */
+
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.particle {
+  position: absolute;
+  bottom: -40px;
+  animation: fly linear forwards;
+  opacity: .9;
+}
+
+/* ================= CONFETTI ================= */
+
+.confetti {
+  position: fixed;
+  width: 9px;
+  height: 15px;
+  top: -20px;
+  z-index: 200;
+  animation: confettiFall 4s linear forwards;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes fadeDown{
-  from{opacity:0;transform:translateY(-40px)}
-  to{opacity:1;transform:translateY(0)}
+@keyframes heartbeat {
+  50% {
+    transform: scale(1.18);
+  }
 }
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:translateY(0)}
+@keyframes shake {
+  0%,100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
 }
 
-@keyframes appear{
-  from{opacity:0;transform:scale(.8)}
-  to{opacity:1;transform:scale(1)}
+@keyframes photoIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(.8);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-@keyframes pulse{
-  50%{transform:scale(1.07)}
+@keyframes fly {
+  to {
+    transform: translateY(-115vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
-@media(max-width:500px){
-  h1{font-size:34px}
-  .gallery{grid-template-columns:1fr}
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@media(max-width:500px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery img:last-child {
+    grid-column: auto;
+  }
+
+  .letter {
+    font-size: 16px;
+  }
+
+  .card {
+    padding: 25px 18px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
-  <div style="font-size:55px">❤️</div>
-  <h1>Happy Birthday, Zaki!</h1>
-  <p class="subtitle">Ada sedikit kejutan buat kamu...</p>
-  <button onclick="openSurprise()">Buka Kejutan 🎁</button>
+<div id="particles"></div>
+
+<!-- ================= PAGE 1 ================= -->
+
+<section class="page active" id="page1">
+
+  <div class="card">
+
+    <div class="big-heart">🤍</div>
+
+    <h1>Hi, Zaki.</h1>
+
+    <p>
+      Aku punya sesuatu buat kamu...
+      <br>
+      Tapi kamu harus buka semuanya satu-satu.
+    </p>
+
+    <p class="small">
+      Jangan langsung di-scroll ya :)
+    </p>
+
+    <button onclick="goTo(2)">
+      Buka Surprise #1 🎁
+    </button>
+
+  </div>
+
 </section>
 
-<section id="surprise">
 
-<div class="card">
+<!-- ================= PAGE 2 ================= -->
 
-<h2>Untuk Zaki ❤️</h2>
+<section class="page" id="page2">
 
-<p class="message">Selamat ulang tahun, Zaki.
+  <div class="card">
 
-Semoga di usia yang baru ini, kamu selalu dikelilingi hal-hal baik, orang-orang yang tulus, dan alasan-alasan kecil untuk tetap tersenyum.
+    <div class="gift">🎁</div>
 
-Terima kasih karena sudah hadir dan menjadi bagian dari hari-hariku. Aku mungkin nggak selalu pandai mengungkapkan semuanya, tapi aku benar-benar menghargai setiap hal kecil yang kamu lakukan.
+    <h2>Surprise #1</h2>
 
-Semoga semua yang kamu semogakan perlahan menemukan jalannya. Jangan pernah berhenti menjadi diri kamu sendiri, karena ada seseorang yang sangat menghargai keberadaan kamu.
+    <p>
+      Kalau kamu sampai di sini,
+      berarti kamu berhasil membuka pintu pertama.
+    </p>
 
-Happy birthday. Semoga hari ini dan hari-hari setelahnya selalu membawa kebahagiaan buat kamu. ❤️</p>
+    <p>
+      Tapi masih ada beberapa hal yang aku sembunyikan.
+    </p>
 
-<div class="gallery">
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
-<img src="photo4.jpg">
-<img src="photo5.jpg">
-</div>
+    <button onclick="goTo(3)">
+      Lanjut 🔐
+    </button>
 
-<h2 style="margin-top:30px">Once again, happy birthday ❤️</h2>
+  </div>
 
-</div>
 </section>
+
+
+<!-- ================= PAGE 3 ================= -->
+
+<section class="page" id="page3">
+
+  <div class="card">
+
+    <h2>Surprise #2 💙</h2>
+
+    <p>
+      Ada <b>3 hati</b> yang harus kamu tekan.
+      <br>
+      Cari semuanya.
+    </p>
+
+    <div class="heart-area" id="heartArea"></div>
+
+    <p id="heartCounter" class="small">
+      0 / 3 hati ditemukan
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PAGE 4 ================= -->
+
+<section class="page" id="page4">
+
+  <div class="card">
+
+    <h2>Surprise #3 📸</h2>
+
+    <p>
+      Sekarang waktunya lihat beberapa
+      potongan kecil yang aku simpan.
+    </p>
+
+    <div class="gallery">
+
+      <img src="photo1.jpg">
+      <img src="photo2.jpg">
+      <img src="photo3.jpg">
+      <img src="photo4.jpg">
+      <img src="photo5.jpg">
+
+    </div>
+
+    <button onclick="goTo(5)">
+      Ada satu hal lagi... ✨
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PAGE 5 ================= -->
+
+<section class="page" id="page5">
+
+  <div class="card">
+
+    <div style="font-size:65px;">💌</div>
+
+    <h2>Surprise #4</h2>
+
+    <p>
+      Sebelum kamu membaca semuanya,
+      aku mau bilang satu hal.
+    </p>
+
+    <p class="quote">
+      "Ada beberapa perasaan yang lebih mudah
+      ditulis daripada diucapkan."
+    </p>
+
+    <button onclick="startLetter()">
+      Buka suratnya 🤍
+    </button>
+
+    <p id="typingText"></p>
+
+    <button id="letterButton"
+            style="display:none;"
+            onclick="goTo(6)">
+      Baca sampai akhir 💙
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PAGE 6 ================= -->
+
+<section class="page" id="page6">
+
+  <div class="card">
+
+    <h2>Untuk kamu, Zaki 🤍</h2>
+
+    <div class="letter">
+
+selamat ulang tahun, sayang.
+
+semoga di usia yang baru ini, kamu semakin dekat dengan semua hal yang kamu impikan. semoga kamu tumbuh menjadi seseorang yang bukan hanya berhasil, tapi juga tetap menjadi diri kamu sendiri, seseorang yang baik, tulus, dan punya hati yang hangat. aku ngga berharap hidup kamu selalu berjalan mudah. aku cuma berharap, di setiap langkah yang kamu ambil, kamu selalu diberi cukup kuat untuk melewati yang berat, cukup sabar untuk menunggu yang belum datang, dan cukup bahagia untuk menikmati hal-hal sederhana yang sering kali terlupakan. terima kasih sudah hadir dan menjadi bagian dari cerita hidupku. aku mungkin nggak tahu akan sejauh apa langkah kita nanti, tapi untuk hari ini, aku bahagia bisa berada di samping kamu dan ikut menyaksikan satu tahun lagi dari perjalanan hidupmu. selamat bertambah usia, cintaku. semoga dunia selalu punya alasan untuk membuat kamu tersenyum, dan semoga kamu selalu menemukan alasan untuk tetap percaya bahwa hal-hal baik masih menunggu kamu di depan 🤍
+
+    </div>
+
+    <button onclick="goTo(7)">
+      Aku sudah baca semuanya 🤍
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PAGE 7 ================= -->
+
+<section class="page" id="page7">
+
+  <div class="card">
+
+    <div style="font-size:70px;">
+      🌙✨
+    </div>
+
+    <h1>One more thing...</h1>
+
+    <p>
+      Kamu pikir sudah selesai?
+    </p>
+
+    <p>
+      Masih ada satu surprise terakhir.
+    </p>
+
+    <button onclick="finalSurprise()">
+      Buka yang terakhir 🎉
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FINAL PAGE ================= -->
+
+<section class="page" id="page8">
+
+  <div class="card">
+
+    <div class="big-heart">🤍</div>
+
+    <h1>Happy Birthday, Zaki!</h1>
+
+    <p>
+      Semoga semua hal baik yang kamu tunggu
+      perlahan menemukan jalannya.
+    </p>
+
+    <p>
+      Semoga kamu selalu punya alasan
+      untuk tersenyum.
+    </p>
+
+    <p>
+      Dan semoga langkah kamu ke depan
+      selalu dipenuhi hal-hal baik.
+    </p>
+
+    <h2>
+      Happy birthday, cintaku. 🤍
+    </h2>
+
+    <p class="small">
+      — from someone who is happy to be part of your story.
+    </p>
+
+  </div>
+
+</section>
+
 
 <script>
-function openSurprise(){
-  document.getElementById("surprise").style.display="block";
-  document.getElementById("surprise").scrollIntoView({
-    behavior:"smooth"
+
+/* ================= NAVIGATION ================= */
+
+function goTo(number) {
+
+  document.querySelectorAll(".page").forEach(function(page) {
+    page.classList.remove("active");
   });
 
-  for(let i=0;i<25;i++){
-    setTimeout(createHeart,i*100);
+  document.getElementById("page" + number).classList.add("active");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  createParticles(10);
+}
+
+
+/* ================= HEART GAME ================= */
+
+let foundHearts = 0;
+
+const heartArea = document.getElementById("heartArea");
+
+for (let i = 0; i < 3; i++) {
+
+  const button = document.createElement("button");
+
+  button.className = "heart-button";
+  button.innerHTML = "♡";
+
+  button.onclick = function() {
+
+    if (button.classList.contains("clicked")) {
+      return;
+    }
+
+    button.classList.add("clicked");
+    button.innerHTML = "♥";
+
+    foundHearts++;
+
+    document.getElementById("heartCounter").innerHTML =
+      foundHearts + " / 3 hati ditemukan";
+
+    createParticles(8);
+
+    if (foundHearts === 3) {
+
+      setTimeout(function() {
+        goTo(4);
+      }, 900);
+
+    }
+
+  };
+
+  heartArea.appendChild(button);
+}
+
+
+/* ================= TYPING LETTER ================= */
+
+function startLetter() {
+
+  const text =
+  "Aku cuma ingin kamu tahu, ada seseorang yang benar-benar mendoakan hal-hal baik untukmu.";
+
+  const element = document.getElementById("typingText");
+
+  element.innerHTML = "";
+
+  let index = 0;
+
+  const interval = setInterval(function() {
+
+    element.innerHTML += text[index];
+
+    index++;
+
+    if (index >= text.length) {
+
+      clearInterval(interval);
+
+      document.getElementById("letterButton").style.display =
+        "inline-block";
+
+    }
+
+  }, 40);
+
+}
+
+
+/* ================= FLOATING PARTICLES ================= */
+
+function createParticles(amount) {
+
+  const container =
+    document.getElementById("particles");
+
+  const symbols = [
+    "🤍",
+    "💙",
+    "✨",
+    "♡",
+    "⭐",
+    "💕"
+  ];
+
+  for (let i = 0; i < amount; i++) {
+
+    setTimeout(function() {
+
+      const particle =
+        document.createElement("div");
+
+      particle.className = "particle";
+
+      particle.innerHTML =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+      particle.style.left =
+        Math.random() * 100 + "vw";
+
+      particle.style.fontSize =
+        (18 + Math.random() * 25) + "px";
+
+      particle.style.animationDuration =
+        (3 + Math.random() * 4) + "s";
+
+      container.appendChild(particle);
+
+      setTimeout(function() {
+        particle.remove();
+      }, 7000);
+
+    }, i * 100);
+
   }
+
 }
 
-function createHeart(){
-  const heart=document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML=["❤️","💙","🤍","💕"][Math.floor(Math.random()*4)];
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.fontSize=(15+Math.random()*25)+"px";
-  document.body.appendChild(heart);
 
-  setTimeout(()=>heart.remove(),6000);
+/* ================= CONFETTI ================= */
+
+function createConfetti() {
+
+  const symbols = [
+    "💙",
+    "🤍",
+    "✨",
+    "💕",
+    "⭐",
+    "🎉"
+  ];
+
+  for (let i = 0; i < 70; i++) {
+
+    const confetti =
+      document.createElement("div");
+
+    confetti.className = "confetti";
+
+    confetti.innerHTML =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    confetti.style.left =
+      Math.random() * 100 + "vw";
+
+    confetti.style.fontSize =
+      (12 + Math.random() * 15) + "px";
+
+    confetti.style.animationDuration =
+      (2 + Math.random() * 3) + "s";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(function() {
+      confetti.remove();
+    }, 5000);
+
+  }
+
 }
+
+
+/* ================= FINAL SURPRISE ================= */
+
+function finalSurprise() {
+
+  createConfetti();
+  createParticles(40);
+
+  setTimeout(function() {
+
+    goTo(8);
+
+    createConfetti();
+    createParticles(50);
+
+  }, 700);
+
+}
+
+
+/* ================= START EFFECT ================= */
+
+createParticles(15);
+
 </script>
 
 </body>
