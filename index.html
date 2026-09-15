@@ -3,95 +3,429 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Muhammad Zaki Afham ♡</title>
+<title>Untuk Zaki Afham ♡</title>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap');
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  margin:0; color:#17324d; background:#f8fbff;
-  font-family:'DM Sans',sans-serif; overflow-x:hidden;
+  margin:0;
+  font-family:'DM Sans',sans-serif;
+  color:#17324d;
+  background:#f8fbff;
+  overflow-x:hidden;
 }
-.bg-heart{position:fixed; color:#e63946; opacity:.10; font-size:30px; pointer-events:none; animation:float 7s ease-in-out infinite}
-.h1{font-family:'Playfair Display',serif}
+
+/* BACKGROUND */
 .hero{
-  min-height:100vh; display:flex; align-items:center; justify-content:center;
-  padding:30px 20px; position:relative; overflow:hidden;
-  background:radial-gradient(circle at 20% 20%,#dceeff 0,transparent 32%),
-             radial-gradient(circle at 85% 80%,#e9f4ff 0,transparent 34%),#fff;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px 20px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 20%,#dff3ff 0,transparent 30%),
+    radial-gradient(circle at 80% 80%,#ffe1ef 0,transparent 30%),
+    linear-gradient(135deg,#f8fbff,#fff5fa);
 }
-.card{width:min(720px,100%); text-align:center; position:relative; z-index:2}
-.small{letter-spacing:4px;text-transform:uppercase;font-size:12px;color:#5e83a6}
-h1{font-family:'Playfair Display',serif;font-size:clamp(42px,9vw,78px);line-height:1.02;margin:18px 0 10px;color:#143a5c}
-.subtitle{font-size:16px;color:#6b8194}
-.heart{font-size:48px;color:#e63946;display:inline-block;animation:pulse 1.6s infinite}
-button,.music-btn{
-  border:0; border-radius:999px; padding:13px 23px; margin-top:25px;
-  background:#173f63;color:#fff;font-weight:600;cursor:pointer;
-  box-shadow:0 8px 24px #173f6325; text-decoration:none; display:inline-block;
+
+.content{
+  max-width:700px;
+  position:relative;
+  z-index:5;
 }
-button:hover,.music-btn:hover{transform:translateY(-2px)}
-.section{padding:85px 20px; max-width:1000px;margin:auto}
-.section h2{font-family:'Playfair Display',serif;font-size:38px;text-align:center;margin:0 0 12px}
-.note{max-width:680px;margin:25px auto 0; background:white;border:1px solid #dbeaf6;
-  padding:32px;border-radius:24px;box-shadow:0 18px 45px #173f6312;line-height:1.85;color:#466174}
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:35px}
-.gallery img{width:100%;height:330px;object-fit:cover;border-radius:22px;box-shadow:0 10px 30px #173f6315}
-.gallery img:first-child{grid-column:span 2;height:420px}
-.final{text-align:center;padding:100px 20px;background:#edf7ff}
-.final h2{font-family:'Playfair Display',serif;font-size:42px;color:#173f63}
-.footer{padding:30px;text-align:center;color:#8aa0b2;font-size:12px}
-.music{margin-top:18px;font-size:13px;color:#71879a}
-@keyframes pulse{50%{transform:scale(1.12)}}
-@keyframes float{50%{transform:translateY(-18px) rotate(8deg)}}
-@media(max-width:600px){
- .gallery{grid-template-columns:1fr}
- .gallery img:first-child{grid-column:auto;height:350px}
- .gallery img{height:300px}
- .note{padding:24px;font-size:14px}
+
+.small{
+  font-size:14px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  opacity:.7;
+  animation:fadeDown 1.5s ease;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,10vw,78px);
+  margin:12px 0;
+  animation:titleIn 1.4s ease;
+}
+
+.subtitle{
+  font-size:17px;
+  line-height:1.8;
+  opacity:.8;
+  animation:fadeUp 1.5s ease .3s both;
+}
+
+button{
+  margin-top:25px;
+  border:0;
+  padding:15px 28px;
+  border-radius:999px;
+  background:#17324d;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 10px 30px #17324d30;
+  transition:.3s;
+  animation:pulse 2s infinite;
+}
+
+button:hover{
+  transform:scale(1.06);
+}
+
+/* FLOATING HEARTS */
+.heart{
+  position:absolute;
+  bottom:-40px;
+  font-size:20px;
+  animation:floatUp linear infinite;
+  opacity:.7;
+  pointer-events:none;
+}
+
+.heart:nth-child(1){left:5%;animation-duration:8s}
+.heart:nth-child(2){left:15%;animation-duration:11s;animation-delay:2s}
+.heart:nth-child(3){left:28%;animation-duration:9s;animation-delay:1s}
+.heart:nth-child(4){left:42%;animation-duration:12s;animation-delay:3s}
+.heart:nth-child(5){left:57%;animation-duration:8s;animation-delay:1s}
+.heart:nth-child(6){left:72%;animation-duration:10s;animation-delay:2s}
+.heart:nth-child(7){left:86%;animation-duration:9s;animation-delay:4s}
+.heart:nth-child(8){left:95%;animation-duration:12s;animation-delay:1s}
+
+/* SPARKLES */
+.sparkle{
+  position:absolute;
+  color:white;
+  animation:twinkle 2s infinite alternate;
+  font-size:22px;
+}
+
+/* MESSAGE */
+.message{
+  padding:100px 20px;
+  text-align:center;
+  background:white;
+}
+
+.card{
+  max-width:650px;
+  margin:auto;
+  padding:40px 28px;
+  border-radius:30px;
+  background:linear-gradient(145deg,#ffffff,#f4f9ff);
+  box-shadow:0 20px 60px #17324d18;
+  opacity:0;
+  transform:translateY(50px);
+  transition:1s;
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card h2{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+}
+
+.card p{
+  line-height:2;
+  font-size:16px;
+}
+
+/* PHOTOS */
+.photos{
+  padding:90px 20px;
+  text-align:center;
+  background:#f8fbff;
+}
+
+.photos h2{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+}
+
+.gallery{
+  max-width:850px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:18px;
+}
+
+.photo{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:22px;
+  box-shadow:0 12px 30px #17324d20;
+  opacity:0;
+  transform:scale(.7) rotate(-5deg);
+  transition:1s;
+}
+
+.photo.show{
+  opacity:1;
+  transform:scale(1) rotate(0);
+}
+
+.photo:hover{
+  transform:scale(1.05) rotate(2deg);
+}
+
+/* FINAL */
+.final{
+  min-height:70vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px 20px;
+  background:
+    radial-gradient(circle at center,#ffe3ef,transparent 50%),
+    #fff8fb;
+}
+
+.final h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(38px,8vw,65px);
+}
+
+.final p{
+  font-size:17px;
+  line-height:1.8;
+}
+
+/* CONFETTI */
+.confetti{
+  position:fixed;
+  top:-20px;
+  width:9px;
+  height:14px;
+  z-index:100;
+  pointer-events:none;
+  animation:confettiFall 3s linear forwards;
+}
+
+/* ANIMATIONS */
+@keyframes titleIn{
+  from{opacity:0;transform:scale(.7) translateY(30px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0) rotate(0);opacity:0}
+  15%{opacity:.7}
+  100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+@keyframes twinkle{
+  from{opacity:.2;transform:scale(.7)}
+  to{opacity:1;transform:scale(1.3)}
+}
+
+@keyframes pulse{
+  0%,100%{box-shadow:0 10px 30px #17324d30}
+  50%{box-shadow:0 10px 40px #17324d55}
+}
+
+@keyframes confettiFall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
 }
 </style>
 </head>
+
 <body>
-<div class="bg-heart" style="left:8%;top:15%">♥</div>
-<div class="bg-heart" style="left:88%;top:25%;animation-delay:1s">♥</div>
-<div class="bg-heart" style="left:12%;top:70%;animation-delay:2s">♥</div>
-<div class="bg-heart" style="left:80%;top:78%;animation-delay:3s">♥</div>
 
 <section class="hero">
-  <div class="card">
-    <div class="small">a little birthday letter for</div>
-    <h1>Muhammad Zaki Afham</h1>
-    <div class="heart">♥</div>
-    <p class="subtitle">hari ini tentang kamu, dan semua hal baik yang semoga datang kepadamu.</p>
-    <button onclick="document.getElementById('letter').scrollIntoView()">Buka suratnya</button>
-    <div class="music">♫ Last Night on Earth — Green Day</div>
+
+  <div class="heart">♡</div>
+  <div class="heart">♥</div>
+  <div class="heart">♡</div>
+  <div class="heart">♥</div>
+  <div class="heart">♡</div>
+  <div class="heart">♥</div>
+  <div class="heart">♡</div>
+  <div class="heart">♥</div>
+
+  <div class="sparkle" style="top:15%;left:15%">✦</div>
+  <div class="sparkle" style="top:25%;right:15%">✧</div>
+  <div class="sparkle" style="bottom:20%;left:20%">✦</div>
+  <div class="sparkle" style="bottom:30%;right:20%">✧</div>
+
+  <div class="content">
+    <div class="small">a little something for</div>
+
+    <h1>Zaki Afham ♡</h1>
+
+    <p class="subtitle">
+      Happy Birthday.<br>
+      Ada sedikit sesuatu yang ingin aku sampaikan untuk kamu.
+    </p>
+
+    <button onclick="openGift()">
+      ✨ Buka Kejutan ✨
+    </button>
   </div>
+
 </section>
 
-<section class="section" id="letter">
-  <h2>Untuk kamu, sayang.</h2>
-  <div class="note">selamat ulang tahun, sayang.<br><br>semoga di usia yang baru ini, kamu semakin dekat dengan semua hal yang kamu impikan. semoga kamu tumbuh menjadi seseorang yang bukan hanya berhasil, tapi juga tetap menjadi diri kamu sendiri, seseorang yang baik, tulus, dan punya hati yang hangat. aku ngga berharap hidup kamu selalu berjalan mudah. aku cuma berharap, di setiap langkah yang kamu ambil, kamu selalu diberi cukup kuat untuk melewati yang berat, cukup sabar untuk menunggu yang belum datang, dan cukup bahagia untuk menikmati hal-hal sederhana yang sering kali terlupakan.<br><br>terima kasih sudah hadir dan menjadi bagian dari cerita hidupku. aku mungkin nggak tahu akan sejauh apa langkah kita nanti, tapi untuk hari ini, aku bahagia bisa berada di samping kamu dan ikut menyaksikan satu tahun lagi dari perjalanan hidupmu.<br><br>selamat bertambah usia, cintaku. semoga dunia selalu punya alasan untuk membuat kamu tersenyum, dan semoga kamu selalu menemukan alasan untuk tetap percaya bahwa hal-hal baik masih menunggu kamu di depan 🤍</div>
+
+<section class="message" id="message">
+
+  <div class="card" id="card">
+
+    <h2>Happy Birthday, Zaki ♡</h2>
+
+    <p>
+      Selamat bertambah usia, Zaki.
+      Semoga di umur yang baru ini, langkah kamu selalu
+      dipertemukan dengan hal-hal baik.
+    </p>
+
+    <p>
+      Aku berharap kamu selalu punya alasan untuk tersenyum,
+      selalu dikelilingi orang-orang yang tulus,
+      dan tidak pernah berhenti menjadi versi terbaik dari diri kamu.
+    </p>
+
+    <p>
+      Terima kasih sudah menjadi seseorang yang begitu berarti.
+      Semoga semua hal baik yang kamu semogakan,
+      satu per satu menemukan jalannya untuk datang kepada kamu.
+    </p>
+
+    <p>
+      <b>Happy birthday, Zaki.</b><br>
+      Semoga tahun ini menjadi salah satu halaman
+      paling indah dalam cerita hidup kamu. ♡
+    </p>
+
+  </div>
+
 </section>
 
-<section class="section">
-  <h2>little memories</h2>
+
+<section class="photos">
+
+  <h2>Little Memories ♡</h2>
+
   <div class="gallery">
-    <img src="photo1.jpg" alt="Memory 1">
-    <img src="photo2.jpg" alt="Memory 2">
-    <img src="photo3.jpg" alt="Memory 3">
-    <img src="photo4.jpg" alt="Memory 4">
-    <img src="photo5.jpg" alt="Memory 5">
+
+    <img src="photo1.jpg" class="photo">
+    <img src="photo2.jpg" class="photo">
+    <img src="photo3.jpg" class="photo">
+    <img src="photo4.jpg" class="photo">
+    <img src="photo5.jpg" class="photo">
+
   </div>
+
 </section>
+
 
 <section class="final">
-  <div class="heart">♥</div>
-  <h2>Happy Birthday, Zaki.</h2>
-  <p>Semoga tahun ini lebih lembut, lebih indah, dan penuh hal-hal yang kamu doakan.</p>
-  <p><b>— dari seseorang yang bahagia bisa ada di sampingmu.</b></p>
+
+  <div>
+
+    <h2>For You, Zaki ♡</h2>
+
+    <p>
+      Semoga hari ini membawa banyak senyum.<br>
+      Dan semoga semua hari setelahnya<br>
+      juga dipenuhi hal-hal baik.
+    </p>
+
+    <p>
+      <b>Happy Birthday 🤍</b>
+    </p>
+
+  </div>
+
 </section>
 
-<div class="footer">made with love ♡</div>
+
+<script>
+
+function openGift(){
+
+  document.getElementById("card").classList.add("show");
+
+  document.getElementById("message").scrollIntoView({
+    behavior:"smooth"
+  });
+
+  createConfetti();
+
+  setTimeout(function(){
+
+    document.querySelectorAll(".photo").forEach(function(photo,index){
+
+      setTimeout(function(){
+        photo.classList.add("show");
+      },index*250);
+
+    });
+
+  },1000);
+
+}
+
+
+function createConfetti(){
+
+  for(let i=0;i<80;i++){
+
+    let c=document.createElement("div");
+
+    c.className="confetti";
+
+    c.style.left=Math.random()*100+"vw";
+
+    c.style.animationDelay=Math.random()*1.5+"s";
+
+    c.style.background=
+      ["#ff8fab","#ffd166","#8ecae6","#bde0fe","#cdb4db"][Math.floor(Math.random()*5)];
+
+    c.style.transform="rotate("+Math.random()*360+"deg)";
+
+    document.body.appendChild(c);
+
+    setTimeout(function(){
+      c.remove();
+    },4000);
+
+  }
+
+}
+
+</script>
+
 </body>
-</html>
+  </html>
